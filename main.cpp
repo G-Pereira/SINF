@@ -12,7 +12,7 @@ typedef struct{
 } sensor;
 
 int main() {
-  sensor devices[4];
+  sensor devices[5];
   char *buf = NULL;
   size_t len = 0;
   char *token;
@@ -26,12 +26,16 @@ int main() {
     for(int i = 0; token != NULL; i++ ) {
       switch(i){
         case 5:
-          char * folowingToken = strtok(NULL, delimiter);
-          strcat(token, folowingToken);
+          strcat(token, strtok(NULL, delimiter));
           id = strtol(token, NULL,16);
           devices[id-1].id = id;
           i++;
           printf("ID: %d\n", id);
+        break;
+        case 10:
+        strcat(token, strtok(NULL, delimiter));
+        devices[id-1].battery = strtol(token, NULL,16);
+        printf("Battery: %d\n", devices[id-1].battery);
         break;
         }
         token = strtok(NULL, delimiter);
