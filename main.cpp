@@ -12,7 +12,7 @@ typedef struct{
 } sensor;
 
 int main() {
-  sensor devices[5];
+  sensor devices[4];
   char *buf = NULL;
   size_t len = 0;
   char *token;
@@ -20,15 +20,18 @@ int main() {
   FILE *file = fopen("/dev/pts/4", "r");
   while(1){
     getline(&buf, &len, file);
-    printf("\n\nNEW SENSOR DATA\n\n");
+    printf("\nNEW SENSOR DATA\n");
     token = strtok(buf, delimiter);
+    int id;
     for(int i = 0; token != NULL; i++ ) {
       switch(i){
         case 5:
-        char * folowingToken = strtok(NULL, delimiter);
-        strcat(token, folowingToken);
-        int id = strtol(token, NULL,16);
-        i++;
+          char * folowingToken = strtok(NULL, delimiter);
+          strcat(token, folowingToken);
+          int id = strtol(token, NULL,16);
+          devices[id-1].id = id;
+          i++;
+          printf("ID: %d\n", id);
         break;
         }
         token = strtok(NULL, delimiter);
