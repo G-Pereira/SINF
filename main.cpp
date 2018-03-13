@@ -28,7 +28,7 @@ int main() {
         case 5:
           char * folowingToken = strtok(NULL, delimiter);
           strcat(token, folowingToken);
-          int id = strtol(token, NULL,16);
+          id = strtol(token, NULL,16);
           devices[id-1].id = id;
           i++;
           printf("ID: %d\n", id);
