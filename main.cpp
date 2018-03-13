@@ -36,6 +36,7 @@ int main() {
         strcat(token, strtok(NULL, delimiter));
         devices[id-1].battery = strtol(token, NULL,16);
         printf("Battery: %d\n", devices[id-1].battery);
+        i++;
         break;
         }
         token = strtok(NULL, delimiter);
