@@ -38,6 +38,30 @@ int main() {
         printf("Battery: %d\n", devices[id-1].battery);
         i++;
         break;
+        case 12:
+        strcat(token, strtok(NULL, delimiter));
+        devices[id-1].temperature = strtol(token, NULL,16);
+        printf("Temperature: %d\n", devices[id-1].temperature);
+        i++;
+        break;
+        case 14:
+        strcat(token, strtok(NULL, delimiter));
+        devices[id-1].humidity = strtol(token, NULL,16);
+        printf("Humidity: %d\n", devices[id-1].humidity);
+        i++;
+        break;
+        case 16:
+        strcat(token, strtok(NULL, delimiter));
+        devices[id-1].visibleLight = strtol(token, NULL,16);
+        printf("Visible Light: %d\n", devices[id-1].visibleLight);
+        i++;
+        break;
+        case 18:
+        strcat(token, strtok(NULL, delimiter));
+        devices[id-1].infraredLight = strtol(token, NULL,16);
+        printf("Infrared Light: %d\n", devices[id-1].infraredLight);
+        i++;
+        break;
         }
         token = strtok(NULL, delimiter);
       }
