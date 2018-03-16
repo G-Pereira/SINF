@@ -48,7 +48,8 @@ int main() {
           break;
         case 14:
           strcat(token, strtok(NULL, delimiter));
-          devices[id-1].humidity = -2.0468+0.0367*(float)strtol(token, NULL,16)-1.5955*pow(10,-6)*pow(reading,2);
+          float reading = (float)strtol(token, NULL,16);
+          devices[id-1].humidity = -2.0468+0.0367*reading-1.5955*pow(10,-6)*pow(reading,2);
           printf("Humidity: %f\n", devices[id-1].humidity);
           i++;
           break;
