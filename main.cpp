@@ -36,33 +36,32 @@ int main() {
           break;
         case 10:
           strcat(token, strtok(NULL, delimiter));
-          devices[id-1].battery = strtol(token, NULL,16)/4096*1.5;
-          printf("Battery: %d\n", devices[id-1].battery);
+          devices[id-1].battery = (float)strtol(token, NULL,16)/4096*1.5;
+          printf("Battery: %f\n", devices[id-1].battery);
           i++;
           break;
         case 12:
           strcat(token, strtok(NULL, delimiter));
-          devices[id-1].temperature = strtol(token, NULL,16)*0.01-39.6;
-          printf("Temperature: %d\n", devices[id-1].temperature);
+          devices[id-1].temperature = (float)strtol(token, NULL,16)*0.01-39.6;
+          printf("Temperature: %f\n", devices[id-1].temperature);
           i++;
           break;
         case 14:
           strcat(token, strtok(NULL, delimiter));
-          reading = strtol(token, NULL,16);
-          devices[id-1].humidity = -2.0468+0.0367*reading-1.5955*pow(10,-6)*pow(reading,2);
-          printf("Humidity: %d\n", devices[id-1].humidity);
+          devices[id-1].humidity = -2.0468+0.0367*(float)strtol(token, NULL,16)-1.5955*pow(10,-6)*pow(reading,2);
+          printf("Humidity: %f\n", devices[id-1].humidity);
           i++;
           break;
         case 16:
           strcat(token, strtok(NULL, delimiter));
-          devices[id-1].visibleLight = strtol(token, NULL,16)/4096*0.625*1.5*pow(10,6)/100;
-          printf("Visible Light: %d\n", devices[id-1].visibleLight);
+          devices[id-1].visibleLight = (float)strtol(token, NULL,16)/4096*0.625*1.5*pow(10,6)/100;
+          printf("Visible Light: %f\n", devices[id-1].visibleLight);
           i++;
           break;
         case 18:
           strcat(token, strtok(NULL, delimiter));
-          devices[id-1].infraredLight = strtol(token, NULL,16)/4096*0.769*1.5*pow(10,5)/100;
-          printf("Infrared Light: %d\n", devices[id-1].infraredLight);
+          devices[id-1].infraredLight = (float)strtol(token, NULL,16)/4096*0.769*1.5*pow(10,5)/100;
+          printf("Infrared Light: %f\n", devices[id-1].infraredLight);
           i++;
           break;
         }
