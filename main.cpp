@@ -18,7 +18,7 @@ int main() {
   size_t len = 0;
   char *token;
   const char delimiter[2] = " ";
-  FILE *file = fopen("/dev/pts/3", "r");
+  FILE *file = fopen("/dev/pts/4", "r");
   while(1){
     getline(&buf, &len, file);
     printf("\nNEW SENSOR DATA\n");
