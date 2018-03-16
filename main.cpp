@@ -27,9 +27,6 @@ int main() {
     int reading;
     for(int i = 0; token != NULL; i++ ) {
       switch(i){
-        case 0:
-        printf("Token: %s\n", token);
-        break;
         case 5:
           strcat(token, strtok(NULL, delimiter));
           id = strtol(token, NULL,16);
