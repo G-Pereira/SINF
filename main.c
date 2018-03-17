@@ -22,43 +22,29 @@ typedef struct
 } sensor;
 
 sensor *devices;
+pthread_t dataThread, actuatorsThread;
 
 void *readData(void *file);
+void *defineActuators(void *out);
 
 int main(int argc, char **argv)
 {
-  pthread_t dataThread, actuatorsThread;
-  if (argc != 2)
+  if (argc != 3)
   {
-    printf("Wrong usage!\nUsage: ./a.out /dev/pts/x\n");
+    printf("Wrong usage!\nUsage: ./a.out /dev/pts/x /dev/pts/y\n");
     return 0;
   }
-  FILE *file = fopen(argv[1], "r");
+  FILE *in = fopen(argv[1], "r");
+  FILE *out = fopen(argv[2], "w");
   while (1)
   {
-    pthread_create(&dataThread, NULL, readData, (void *)file);
-    for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++)
-    {
-      if (devices[i].temperature < TEMP_LOW)
-      {
-      }
-      if (devices[i].temperature > TEMP_HIGH)
-      {
-      }
-      if (devices[i].humidity < HUM_LOW)
-      {
-      }
-      if (devices[i].humidity > HUM_HIGH)
-      {
-      }
-      if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH)
-      {
-        //ligar as luzes
-      }
-    }
+    pthread_create(&dataThread, NULL, readData, (void *)in);
+    pthread_create(&actuatorsThread, NULL, defineActuators, (void *)out);
     pthread_join(dataThread, NULL);
+    pthread_join(actuatorsThread, NULL);
   }
-  fclose(file);
+  fclose(in);
+  fclose(out);
   return 0;
 }
 
@@ -116,4 +102,32 @@ void *readData(void *f)
     token = strtok(NULL, delimiter);
   }
   printf("New Data has been read\n");
+}
+
+void *defineActuators(void *f)
+{
+  FILE *file = (FILE *)f;
+  char* buf= NULL;
+  for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++)
+  {
+    printf("%d", i);
+    if (devices[i].temperature < TEMP_LOW)
+    {
+    }
+    if (devices[i].temperature > TEMP_HIGH)
+    {
+    }
+    if (devices[i].humidity < HUM_LOW)
+    {
+    }
+    if (devices[i].humidity > HUM_HIGH)
+    {
+    }
+    if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH)
+    {
+      //ligar as luzes
+    }
+  }
+  strcat(buf, "lala ");
+  fputs(buf, file);
 }
