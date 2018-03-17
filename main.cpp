@@ -13,7 +13,7 @@ typedef struct{
 } sensor;
 
 int main() {
-  sensor devices[5];
+  sensor* devices = (sensor*) malloc(sizeof(sensor));
   char *buf = NULL;
   size_t len = 0;
   char *token;
@@ -30,6 +30,9 @@ int main() {
         case 5:
           strcat(token, strtok(NULL, delimiter));
           id = strtol(token, NULL,16);
+          if(sizeof(devices)/sizeof(sensor)<id){
+            devices = (sensor*) realloc(devices, sizeof(sensor)*id);
+          }
           devices[id-1].id = id;
           i++;
           printf("ID: %d\n", id);
@@ -67,6 +70,11 @@ int main() {
           break;
         }
         token = strtok(NULL, delimiter);
+      }
+      for(int i = 0; i < sizeof(devices)/sizeof(sensor);i++){
+        if(devices[i].temperature){
+
+        }
       }
     }
   return 0;
