@@ -26,8 +26,8 @@ int main(int argc, char** argv) {
   char *token;
   const char delimiter[2] = " ";
   int id;
-  if(argc <= 1){
-    printf("Please Specify Socket to Read\nUsage: ./a.out /dev/pts/x\n");
+  if(argc != 2){
+    printf("Wrong usage!\nUsage: ./a.out /dev/pts/x\n");
     return 0;
   }
 
