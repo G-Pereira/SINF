@@ -3,6 +3,13 @@
 #include <string.h>
 #include <math.h>
 
+#define TEMP_LOW 15
+#define TEMP_HIGH 25
+#define HUM_LOW 60
+#define HUM_HIGH 85
+#define LIGHT_TRESH 200
+#define INFRA_TRESH 350
+
 typedef struct{
   int id;
   float battery;
@@ -77,8 +84,20 @@ int main(int argc, char** argv) {
         token = strtok(NULL, delimiter);
       }
       for(int i = 0; i < sizeof(devices)/sizeof(sensor);i++){
-        if(devices[i].temperature){
+        if(devices[i].temperature < TEMP_LOW){
 
+        }
+        if(devices[i].temperature > TEMP_HIGH){
+
+        }
+        if(devices[i].humidity < HUM_LOW){
+
+        }
+        if(devices[i].humidity > HUM_HIGH){
+          
+        }
+        if(devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH){
+          //ligar as luzes
         }
       }
     }
