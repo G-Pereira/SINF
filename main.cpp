@@ -12,19 +12,24 @@ typedef struct{
   float infraredLight;
 } sensor;
 
-int main() {
+int main(int argc, char** argv) {
   sensor devices[5];
   char *buf = NULL;
   size_t len = 0;
   char *token;
   const char delimiter[2] = " ";
-  FILE *file = fopen("/dev/pts/4", "r");
+  int id;
+  if(argc <= 1){
+    printf("Please Specify Socket to Read\nUsage: ./a.out /dev/pts/x\n");
+    return 0;
+  }
+
+  FILE *file = fopen(argv[1], "r");
   while(1){
     getline(&buf, &len, file);
     printf("\nNEW SENSOR DATA\n");
     token = strtok(buf, delimiter);
-    int id;
-    int reading;
+
     for(int i = 0; token != NULL; i++ ) {
       switch(i){
         case 5:
