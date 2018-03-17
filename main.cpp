@@ -13,7 +13,7 @@ typedef struct{
 } sensor;
 
 int main(int argc, char** argv) {
-  sensor devices[5];
+  sensor* devices;
   char *buf = NULL;
   size_t len = 0;
   char *token;
