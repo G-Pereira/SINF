@@ -35,6 +35,9 @@ int main(int argc, char** argv) {
         case 5:
           strcat(token, strtok(NULL, delimiter));
           id = strtol(token, NULL,16);
+          if(sizeof(devices)/sizeof(sensor)<id){
+            devices = (sensor*) realloc(devices, sizeof(sensor)*id);
+          }
           devices[id-1].id = id;
           i++;
           printf("ID: %d\n", id);
@@ -72,6 +75,11 @@ int main(int argc, char** argv) {
           break;
         }
         token = strtok(NULL, delimiter);
+      }
+      for(int i = 0; i < sizeof(devices)/sizeof(sensor);i++){
+        if(devices[i].temperature){
+
+        }
       }
     }
   return 0;
