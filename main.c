@@ -107,7 +107,7 @@ void *readData(void *f)
 void *defineActuators(void *f)
 {
   FILE *file = (FILE *)f;
-  char* buf= NULL;
+  char *buf = NULL;
   for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++)
   {
     printf("%d", i);
