@@ -102,17 +102,23 @@ void *defineActuators(void *f) {
   char *buf = NULL;
   for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++) {
     printf("%d", i);
-    if (devices[i].temperature < TEMP_LOW) {
+    if (devices[i].temperature < TEMP_LOW) {                  //ativar aquecedor
     }
-    if (devices[i].temperature > TEMP_HIGH) {
+    else
+    if (devices[i].temperature > TEMP_HIGH) {                 //ativar ar condicionado
     }
-    if (devices[i].humidity < HUM_LOW) {
+    else
+    if (devices[i].humidity > HUM_HIGH) {                     //ativar deshumidificador
     }
-    if (devices[i].humidity > HUM_HIGH) {
-    }
-    if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH) {
+    else
+    if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH) {   
       //ligar as luzes
     }
+    else
+    if (devices[i].visibleLight > LIGHT_TRESH) {   
+      //ligar as cortinas
+    }
+    else
   }
   fputs("lala\n", file);
 }
