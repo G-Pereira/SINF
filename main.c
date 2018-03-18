@@ -99,7 +99,7 @@ void *readData(void *f) {
 void *defineActuators(void *f) {
   FILE *file = (FILE *) f;
   char *buf = NULL;
-  for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++) {
+  for (int i = 0; i < (sizeof(devices) / sizeof(sensor)); i++) {
     if (i == 0) {
       strcat(buf, "[[0,102,0],");
     } else if (i == 1) {
@@ -141,5 +141,5 @@ void *defineActuators(void *f) {
         strcat(buf, "[0,0,0],");
     }
   }
-  fputs(buf, file);
+  if(sizeof(devices) / sizeof(sensor)>0) fputs(buf, file);
 }
