@@ -21,7 +21,6 @@ typedef struct {
 } sensor;
 
 sensor *devices;
-int ndevices = 0;
 pthread_t dataThread, actuatorsThread;
 
 void *readData(void *f);
@@ -33,18 +32,13 @@ int main(int argc, char **argv) {
     printf("Wrong usage!\nUsage: ./a.out /dev/pts/x /dev/pts/y\n");
     return 0;
   }
-	printf("1\n");
   FILE *in = fopen(argv[1], "r");
   FILE *out = fopen(argv[2], "w");
-	printf("2\n");
   while (1) {
     pthread_create(&dataThread, NULL, readData, (void *) in);
-	printf("3\n");
     pthread_create(&actuatorsThread, NULL, defineActuators, (void *) out);
-	printf("4\n");    
- 	//pthread_join(dataThread, NULL);
-	
-	 //   pthread_join(actuatorsThread, NULL);
+    pthread_join(dataThread, NULL);
+    pthread_join(actuatorsThread, NULL);
   }
   fclose(in);
   fclose(out);
@@ -65,9 +59,8 @@ void *readData(void *f) {
       case 5:
         strcat(token, strtok(NULL, delimiter));
         id = (int) strtol(token, NULL, 16);
-        if (ndevices < id) {
+        if (sizeof(devices) / sizeof(sensor) < id) {
           devices = (sensor *) realloc(devices, sizeof(sensor) * id);
-          ndevices = id;
         }
         devices[id - 1].id = id;
         i++;
@@ -106,9 +99,9 @@ void *readData(void *f) {
 void *defineActuators(void *f) {
   FILE *file = (FILE *) f;
   char *buf;
-  printf("%d", ndevices);
-	 if (ndevices > 0){
-  for (int i = 0; i < ndevices; i++) {
+  strcmp(buf, " ");
+  printf("%d", sizeof(devices) / sizeof(sensor));
+  for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++) {
     printf("entrou no for");
     if (i == 0) {
       strcat(buf, "[[0,102,0],");
@@ -150,8 +143,7 @@ void *defineActuators(void *f) {
       } else
         strcat(buf, "[0,0,0],");
     }
-  }
 
-  fputs(buf, file);
-}
+    //fputs(buf, file);
+  }
 }
