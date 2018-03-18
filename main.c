@@ -158,7 +158,7 @@ void *defineActuators(void *f)
     { //lampadas off
       strcat(buf, "[0,0,0],");
     }
-    if(i==(sizeof(devices) / sizeof(sensor)-1){
+    if(i==(sizeof(devices) / sizeof(sensor))-1){
       if (devices[i].visibleLight > LIGHT_TRESH)
       { //ligar as cortinas
         strcat(buf, "[255,255,0]]");
