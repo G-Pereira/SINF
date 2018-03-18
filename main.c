@@ -94,14 +94,12 @@ void *readData(void *f) {
     }
     token = strtok(NULL, delimiter);
   }
-  printf("New Data has been read\n");
 }
 
 void *defineActuators(void *f) {
   FILE *file = (FILE *) f;
   char *buf = NULL;
   for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++) {
-    printf("%d", i);
     if (i == 0) {
       strcat(buf, "[[0,102,0],");
     } else if (i == 1) {
