@@ -102,23 +102,54 @@ void *defineActuators(void *f) {
   char *buf = NULL;
   for (int i = 0; i < sizeof(devices) / sizeof(sensor); i++) {
     printf("%d", i);
+	if(i==0){
+	strcat(buf, "[[0,102,0],");
+	}
+	else if(i==1){
+	strcat(buf, "[255,128,0],");
+	}
+	else if(i==2){
+	strcat(buf, "[0,0,153],");
+	}
+	else if(i==3){
+	strcat(buf, "[255,0,127],");
+	}
+	else if(i==4){
+	strcat(buf, "[0,255,0],");
+	}
     if (devices[i].temperature < TEMP_LOW) {                  //ativar aquecedor
+	strcat(buf, "[255,0,0],");
     }
-    else
+    else strcat(buf, "[0,0,0],");
     if (devices[i].temperature > TEMP_HIGH) {                 //ativar ar condicionado
+	strcat(buf, "[0,0,255],");
     }
-    else
+    else strcat(buf, "[0,0,0],");
     if (devices[i].humidity > HUM_HIGH) {                     //ativar deshumidificador
+	strcat(buf, "[0, 255, 255],");
     }
-    else
-    if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH) {   
-      //ligar as luzes
+    else strcat(buf, "[0,0,0],");
+    if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH) {   //ligar as luzes
+	strcat(buf, "[255, 255, 255],");
     }
-    else
-    if (devices[i].visibleLight > LIGHT_TRESH) {   
-      //ligar as cortinas
+    if (devices[i].infraredLight < INFRA_TRESH){               //lampadas off
+     	strcat(buf, "[0,0,0],");
     }
-    else
-  }
+	if(i==(sizeof(devices) / sizeof(sensor)-1){
+    if (devices[i].visibleLight > LIGHT_TRESH) {   //ligar as cortinas
+      	strcat(buf, "[255,255,0]]");
+    }
+    else strcat(buf, "[0,0,0]]");
+    }
+
+
+    }
+    else{
+    if (devices[i].visibleLight > LIGHT_TRESH) {   //ligar as cortinas
+      	strcat(buf, "[255,255,0],");
+    }
+    else strcat(buf, "[0,0,0],");
+    }
+
   fputs("lala\n", file);
 }
