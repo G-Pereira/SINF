@@ -141,9 +141,7 @@ void *defineActuators(void *f) {
     }
     else strcat(buf, "[0,0,0]]");
     }
-
-
-    }
+    
     else{
     if (devices[i].visibleLight > LIGHT_TRESH) {   //ligar as cortinas
       	strcat(buf, "[255,255,0],");
