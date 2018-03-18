@@ -1,0 +1,199 @@
+Identifier: Case 1
+Name: Check System
+Author: Grupo …
+Version: Versão 1
+Change history: -----
+Priority: ---
+Criticality: Medium
+Source: Kemilly Garcia
+Short description: It provides the user the ability to check the state of the sensors and actuators.
+Goal(s): Check sensors and actuators state.
+Primary actor: User.
+Other actors: Master.
+Precondition: The system is turned ON.
+Postcondition: The user knows now the information on the sensors and actuators.
+Result: Obtain information.
+Main scenario: The user requests the current state of the system and that information is provided.
+Alternative scenario(s): None.
+Exception scenario(s): The request isn’t attended to which means the system needs maintenance.
+
+
+Identifier: Case 2
+Name: Configure System
+Author: Grupo …
+Version: Versão 1
+Change history: ----
+Priority: Low when compared to Reconfigure System.
+Criticality: High
+Source: Kemilly Garcia
+Short description: The master makes rules for the house that can later be changed by the user.
+ Goal(s): Set a list of ground rules.
+Primary actor: Master.
+Other actors: None.
+Precondition: The system doesn´t have any rules.
+Postcondition: The system has ground rules.
+Result: Have base rules for the house.
+Main scenario: The master inputs a set of ground rules for the system to work. These rules can later be changed by the user.
+Alternative scenario(s): None.
+Exception scenario(s): The rules can’t be saved.
+
+
+Identifier: Case 3
+Name: Define house default preferences
+Author: Grupo …
+Version: Versão 1
+Change history: -----
+Priority: Low when compared to Define room default preferences
+Criticality: High
+Source: Kemilly Garcia
+Short description: The master sets rules for the entire house.
+ Goal(s): Set a list of house rules.
+Primary actor: Master
+Other actors: None
+Precondition: The system doesn´t have any house rules.
+Postcondition: The system has base house rules.
+Result: Have general rules for the house.
+Main scenario: The master inputs a set of ground rules of the general house for the system to work. These rules can later be changed by the user.
+Alternative scenario(s): None.
+Exception scenario(s): The rules can’t be saved.
+
+
+Identifier: Case 4
+Name: Define room default preferences
+Author: Grupo …
+Version: Versão 1
+Change history: ----
+Priority: High when compared to Define house default preferences
+Criticality: High
+Source: Kemilly Garcia
+Short description: The master sets rules for the each specific room.
+Goal(s): Set a list of each room rules.
+Primary actor: Master
+Other actors: None
+Precondition: The system doesn´t have any rules for the rooms.
+Postcondition: The system has base rules for each room.
+Result: Have rules for the rooms.
+Main scenario: The master inputs a set of ground rules for each specific room for the system to work. These rules can later be changed by the user.
+Alternative scenario(s): None.
+Exception scenario(s): The rules can’t be saved.
+
+
+Identifier: Case 5
+Name: Reconfigure System
+Author: Grupo …
+Version: Versão 1
+Change history: -----
+Priority: High when compared to Configure System
+Criticality: Medium
+Source: Kemilly Garcia
+Short description: It provides the user the ability to change the rules imposed by the master.
+Goal(s): Change the rules to the user’s preferred settings.
+Primary actor: User
+Other actors: Master
+Precondition: 
+Postcondition: The setting are as desired by the user.
+Result: The user has his own rules.
+Main scenario: The user changes the rules set previously.
+Alternative scenario(s): None.
+Exception scenario(s): The changes can’t be saved. 
+
+
+Identifier: Case 6
+Name: Change house settings
+Author: Grupo …
+Version: Versão 1
+Change history: ----
+Priority: Low when compared to Change room settings
+Criticality: Medium
+Source: Kemilly Garcia
+Short description: It provides the user the ability to change the rules imposed by the master for the entire house.
+Goal(s): Change the rules of the house to the user’s preferred settings.
+Primary actor: User
+Other actors: Master
+Precondition:
+Postcondition: The rules of the house are as desired by the user.
+Result: The user has his own rules for the house.
+Main scenario: The user changes the genera house rules set previously.
+Alternative scenario(s): None.
+Exception scenario(s): The changes can’t be saved.
+
+
+Identifier: Case 7
+Name: Change room settings
+Author: Grupo …
+Version: Versão 1
+Change history: ----
+Priority: High when compared to Change house settings 
+Criticality: Medium
+Source: Kemilly Garcia
+Short description: It provides the user the ability to change the rules imposed by the master for each room.
+Goal(s): Change the rules of each room to the user’s preferred settings.
+Primary actor: User
+Other actors: Master
+Precondition: 
+Postcondition: The rules of each room are as desired by the user.
+Result: The user has his own rules for each room.
+Main scenario: The user changes the rules set previously of a room.
+Alternative scenario(s): None.
+Exception scenario(s): The changes can’t be saved.
+
+
+Identifier: Case 8
+Name: System Control
+Author: Grupo …
+Version: Versão 1
+Change history: ----
+Priority: --
+Criticality: Very High
+Source: Kemilly Garcia
+Short description: Receives information from the sensors and activates the actuators depending on the house rules of the moment.
+Goal(s): Control the actuators according to the rules and the information of the sensors.
+Primary actor: 
+Other actors: 
+Precondition: The sensors are transmitting information.
+Postcondition: The actuators are active.
+Result: The system works as is supposed.
+Main scenario: The actuators activate according to the information gathered by the sensors and the rules set at the moment.
+Alternative scenario(s): None.
+Exception scenario(s):   The sensors don’t receive information.
+			                   The actuators don’t activate. 
+
+
+Identifier: Case 9
+Name: Maintenance
+Author: Grupo …
+Version: Versão 1
+Change history: ----
+Priority: Higher than any other order except Login 
+Criticality: High
+Source: Kemilly Garcia
+Short description: The master repairs the system as necessary.
+Goal(s): Repair the system.
+Primary actor: Master
+Other actors: None
+Precondition: The system is broken
+Postcondition: The system is repaired
+Result: Have a functioning system.
+Main scenario: The system needs repairing.
+Alternative scenario(s): None:
+Exception scenario(s): The master can’t login. 
+
+
+Identifier: Case 10
+Name: Login
+Author: Grupo …
+Version: Versão 1
+Change history: ----
+Priority: Higher than any other order
+Criticality: Very High
+Source: Kemilly Garcia
+Short description: The master has to provide his credentials in order to be able to repair the system.
+Goal(s): Enter the maintenance process.
+Primary actor: Master
+Other actors: None
+Precondition: The master needs to repair the system. 
+Postcondition: The master can repair the system.
+Result: Have access to the maintenance case.
+Main scenario: The master logs in to be able to repair the system.
+Alternative scenario(s): None.
+Exception scenario(s): The master can’t login.
