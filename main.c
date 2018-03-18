@@ -33,13 +33,18 @@ int main(int argc, char **argv) {
     printf("Wrong usage!\nUsage: ./a.out /dev/pts/x /dev/pts/y\n");
     return 0;
   }
+	printf("1\n");
   FILE *in = fopen(argv[1], "r");
   FILE *out = fopen(argv[2], "w");
+	printf("2\n");
   while (1) {
     pthread_create(&dataThread, NULL, readData, (void *) in);
+	printf("3\n");
     pthread_create(&actuatorsThread, NULL, defineActuators, (void *) out);
-    pthread_join(dataThread, NULL);
-    pthread_join(actuatorsThread, NULL);
+	printf("4\n");    
+ 	//pthread_join(dataThread, NULL);
+	
+	 //   pthread_join(actuatorsThread, NULL);
   }
   fclose(in);
   fclose(out);
@@ -102,6 +107,7 @@ void *defineActuators(void *f) {
   FILE *file = (FILE *) f;
   char *buf;
   printf("%d", ndevices);
+	 if (ndevices > 0){
   for (int i = 0; i < ndevices; i++) {
     printf("entrou no for");
     if (i == 0) {
@@ -145,5 +151,7 @@ void *defineActuators(void *f) {
         strcat(buf, "[0,0,0],");
     }
   }
-  if (ndevices > 0) fputs(buf, file);
+
+  fputs(buf, file);
+}
 }
