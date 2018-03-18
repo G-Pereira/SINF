@@ -149,5 +149,5 @@ void *defineActuators(void *f) {
     else strcat(buf, "[0,0,0],");
     }
 
-  fputs("lala\n", file);
+  fputs(buf, file);
 }
