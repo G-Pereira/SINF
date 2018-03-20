@@ -4,11 +4,11 @@
 #include <math.h>
 #include <pthread.h>
 
-#define TEMP_LOW 15
-#define TEMP_HIGH 25
+#define TEMP_LOW 24
+#define TEMP_HIGH 27
 #define HUM_HIGH 40
-#define LIGHT_TRESH 450
-#define INFRA_TRESH 400
+#define LIGHT_TRESH 465
+#define INFRA_TRESH 330
 
 typedef struct {
   int id;
@@ -128,8 +128,7 @@ void *defineActuators(void *f) {
       strcat(buf, "[0,0,0],");
     if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH) { //ligar as luzes
       strcat(buf, "[255, 255, 255],");
-    }
-    if (devices[i].infraredLight < INFRA_TRESH) { //lampadas off
+    } else { 										//lampadas off
       strcat(buf, "[0,0,0],");
     }
     if (i == ndevices - 1) {
