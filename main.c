@@ -7,7 +7,7 @@
 #define TEMP_LOW 24
 #define TEMP_HIGH 27
 #define HUM_HIGH 40
-#define LIGHT_TRESH 465
+#define LIGHT_TRESH 380
 #define INFRA_TRESH 330
 
 typedef struct {
@@ -70,7 +70,9 @@ void *readData(void *f) {
         break;
       case 10:
         strcat(token, strtok(NULL, delimiter));
-        devices[id - 1].battery = strtol(token, NULL, 16)  * 1.5 / 4096;
+	double battery=strtol(token, NULL, 16)  * 1.5 / 4096;
+		if(battery==0.0) pthread_exit(NULL);
+        devices[id - 1].battery = battery;
         i++;
         break;
       case 12:
@@ -95,6 +97,7 @@ void *readData(void *f) {
         i++;
         break;
     }
+
     token = strtok(NULL, delimiter);
   }
 }
@@ -104,16 +107,37 @@ void *defineActuators(void *f) {
   char buf[500] = "";
   for (int i = 0; i < ndevices; i++) {
     printf("New Sensor:\nID: %d\nBattery Level: %lf\nTemperature: %lf\nHumidity: %lf\nVisible Light: %lf\nInfrared Light: %lf\n\n", devices[i].id, devices[i].battery, devices[i].temperature, devices[i].humidity, devices[i].visibleLight, devices[i].infraredLight);
-    if (i == 0) {
-      strcat(buf, "[[0,102,0],");
+   
+	if (i == 0) {
+		if(devices[i].battery == 0){      
+			strcat(buf, "[[0,0,0],");
+			} else{
+			strcat(buf, "[[0,102,0],");
+			}
     } else if (i == 1) {
-      strcat(buf, "[255,128,0],");
+	if(devices[i].battery == 0){      
+		strcat(buf, "[0,0,0],");
+	} else{
+     	strcat(buf, "[255,128,0],");
+	}
     } else if (i == 2) {
-      strcat(buf, "[0,0,153],");
+	if(devices[i].battery == 0){      
+		strcat(buf, "[0,0,0],");
+	} else{
+		 strcat(buf, "[0,0,153],");
+	}
     } else if (i == 3) {
-      strcat(buf, "[255,0,127],");
+	if(devices[i].battery == 0){      
+		strcat(buf, "[0,0,0],");
+	} else{
+	 	strcat(buf, "[255,0,127],");
+	}
     } else if (i == 4) {
-      strcat(buf, "[0,255,0],");
+	if(devices[i].battery == 0){      
+		strcat(buf, "[0,0,0],");
+	} else{
+	 	strcat(buf, "[0,255,0],");
+	}
     }
     if (devices[i].temperature < TEMP_LOW) { //ativar aquecedor
       strcat(buf, "[255,0,0],");
@@ -123,9 +147,9 @@ void *defineActuators(void *f) {
     } else
       strcat(buf, "[0,0,0],");
     if (devices[i].humidity > HUM_HIGH) { //ativar deshumidificador
-      strcat(buf, "[0, 255, 255],");
+      strcat(buf, "[0, 255, 255],");	//azul clarinho
     } else
-      strcat(buf, "[0,0,0],");
+      strcat(buf, "[99, 15, 3],");	//castanho
     if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH) { //ligar as luzes
       strcat(buf, "[255, 255, 255],");
     } else { 										//lampadas off
@@ -135,13 +159,13 @@ void *defineActuators(void *f) {
       if (devices[i].visibleLight > LIGHT_TRESH) { //ligar as cortinas
         strcat(buf, "[255,255,0]]");
       } else {
-        strcat(buf, "[0,0,0]]");
+        strcat(buf, "[178, 176, 149]]");
       }
     } else {
       if (devices[i].visibleLight > LIGHT_TRESH) { //ligar as cortinas
         strcat(buf, "[255,255,0],");
       } else
-        strcat(buf, "[0,0,0],");
+        strcat(buf, "[178, 176, 149],");
     }
   }
     strcat(buf, "\n");
