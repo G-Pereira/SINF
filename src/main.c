@@ -70,19 +70,19 @@ void *readData(void *f) {
         break;
       case 10:
         strcat(token, strtok(NULL, delimiter));
-	double battery=strtol(token, NULL, 16)  * 1.5 / 4096;
-		if(battery==0.0) pthread_exit(NULL);
+        double battery = strtol(token, NULL, 16) * 1.5 / 4096;
+        if (battery == 0.0) pthread_exit(NULL);
         devices[id - 1].battery = battery;
         i++;
         break;
       case 12:
         strcat(token, strtok(NULL, delimiter));
-        devices[id - 1].visibleLight = strtol(token, NULL, 16) * pow(10, 6) * 1.5  / 100 / 4096 * 0.625;
+        devices[id - 1].visibleLight = strtol(token, NULL, 16) * pow(10, 6) * 1.5 / 100 / 4096 * 0.625;
         i++;
         break;
       case 14:
         strcat(token, strtok(NULL, delimiter));
-        devices[id - 1].infraredLight = pow(10, 5) * strtol(token, NULL, 16)  * 1.5  / 100 *0.769 / 4096;
+        devices[id - 1].infraredLight = pow(10, 5) * strtol(token, NULL, 16) * 1.5 / 100 * 0.769 / 4096;
         i++;
         break;
       case 16:
@@ -97,7 +97,6 @@ void *readData(void *f) {
         i++;
         break;
     }
-
     token = strtok(NULL, delimiter);
   }
 }
@@ -106,53 +105,55 @@ void *defineActuators(void *f) {
   FILE *file = (FILE *) f;
   char buf[500] = "";
   for (int i = 0; i < ndevices; i++) {
-    printf("New Sensor:\nID: %d\nBattery Level: %lf\nTemperature: %lf\nHumidity: %lf\nVisible Light: %lf\nInfrared Light: %lf\n\n", devices[i].id, devices[i].battery, devices[i].temperature, devices[i].humidity, devices[i].visibleLight, devices[i].infraredLight);
-   
-	if (i == 0) {
-		if(devices[i].battery == 0){      
-			strcat(buf, "[[0,0,0],");
-			} else{
-			strcat(buf, "[[0,102,0],");
-			}
+    printf(
+      "New Sensor:\nID: %d\nBattery Level: %lf\nTemperature: %lf\nHumidity: %lf\nVisible Light: %lf\nInfrared Light: %lf\n\n",
+      devices[i].id, devices[i].battery, devices[i].temperature, devices[i].humidity, devices[i].visibleLight,
+      devices[i].infraredLight);
+
+    if (i == 0) {
+      if (devices[i].battery == 0) {
+        strcat(buf, "[[0,0,0],");
+      } else {
+        strcat(buf, "[[0,102,0],");
+      }
     } else if (i == 1) {
-	if(devices[i].battery == 0){      
-		strcat(buf, "[0,0,0],");
-	} else{
-     	strcat(buf, "[255,128,0],");
-	}
+      if (devices[i].battery == 0) {
+        strcat(buf, "[0,0,0],");
+      } else {
+        strcat(buf, "[255,128,0],");
+      }
     } else if (i == 2) {
-	if(devices[i].battery == 0){      
-		strcat(buf, "[0,0,0],");
-	} else{
-		 strcat(buf, "[0,0,153],");
-	}
+      if (devices[i].battery == 0) {
+        strcat(buf, "[0,0,0],");
+      } else {
+        strcat(buf, "[0,0,153],");
+      }
     } else if (i == 3) {
-	if(devices[i].battery == 0){      
-		strcat(buf, "[0,0,0],");
-	} else{
-	 	strcat(buf, "[255,0,127],");
-	}
+      if (devices[i].battery == 0) {
+        strcat(buf, "[0,0,0],");
+      } else {
+        strcat(buf, "[255,0,127],");
+      }
     } else if (i == 4) {
-	if(devices[i].battery == 0){      
-		strcat(buf, "[0,0,0],");
-	} else{
-	 	strcat(buf, "[0,255,0],");
-	}
+      if (devices[i].battery == 0) {
+        strcat(buf, "[0,0,0],");
+      } else {
+        strcat(buf, "[0,255,0],");
+      }
     }
     if (devices[i].temperature < TEMP_LOW) { //ativar aquecedor
       strcat(buf, "[255,0,0],");
-    }
-    else if (devices[i].temperature > TEMP_HIGH) { //ativar ar condicionado
+    } else if (devices[i].temperature > TEMP_HIGH) { //ativar ar condicionado
       strcat(buf, "[0,0,255],");
     } else
       strcat(buf, "[0,0,0],");
     if (devices[i].humidity > HUM_HIGH) { //ativar deshumidificador
-      strcat(buf, "[0, 255, 255],");	//azul clarinho
+      strcat(buf, "[0, 255, 255],");  //azul clarinho
     } else
-      strcat(buf, "[99, 15, 3],");	//castanho
+      strcat(buf, "[99, 15, 3],");  //castanho
     if (devices[i].visibleLight < LIGHT_TRESH && devices[i].infraredLight > INFRA_TRESH) { //ligar as luzes
       strcat(buf, "[255, 255, 255],");
-    } else { 										//lampadas off
+    } else {                    //lampadas off
       strcat(buf, "[0,0,0],");
     }
     if (i == ndevices - 1) {
@@ -168,7 +169,6 @@ void *defineActuators(void *f) {
         strcat(buf, "[178, 176, 149],");
     }
   }
-    strcat(buf, "\n");
-    fputs(buf, file);
-
+  strcat(buf, "\n");
+  fputs(buf, file);
 }

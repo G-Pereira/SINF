@@ -3,6 +3,6 @@ project(SINF)
 
 find_package (Threads)
 
-add_executable(SINF main.c)
+add_executable(SINF src/main.c)
 
 target_link_libraries (SINF m ${CMAKE_THREAD_LIBS_INIT})
