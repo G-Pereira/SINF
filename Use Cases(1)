@@ -3,7 +3,7 @@ Name: Check System
 Author: Grupo …
 Version: Versão 1
 Change history: -----
-Priority: ---
+Priority: 9-Low
 Criticality: Medium
 Source: Kemilly Garcia
 Short description: It provides the user the ability to check the state of the sensors and actuators.
@@ -23,7 +23,7 @@ Name: Configure System
 Author: Grupo …
 Version: Versão 1
 Change history: ----
-Priority: Low when compared to Reconfigure System.
+Priority: 6-Low when compared to Reconfigure System.
 Criticality: High
 Source: Kemilly Garcia
 Short description: The master makes rules for the house that can later be changed by the user.
@@ -43,7 +43,7 @@ Name: Define house default preferences
 Author: Grupo …
 Version: Versão 1
 Change history: -----
-Priority: Low when compared to Define room default preferences
+Priority: 8-Low when compared to Define room default preferences
 Criticality: High
 Source: Kemilly Garcia
 Short description: The master sets rules for the entire house.
@@ -63,7 +63,7 @@ Name: Define room default preferences
 Author: Grupo …
 Version: Versão 1
 Change history: ----
-Priority: High when compared to Define house default preferences
+Priority: 7-High when compared to Define house default preferences
 Criticality: High
 Source: Kemilly Garcia
 Short description: The master sets rules for the each specific room.
@@ -83,7 +83,7 @@ Name: Reconfigure System
 Author: Grupo …
 Version: Versão 1
 Change history: -----
-Priority: High when compared to Configure System
+Priority: 3-High when compared to Configure System
 Criticality: Medium
 Source: Kemilly Garcia
 Short description: It provides the user the ability to change the rules imposed by the master.
@@ -103,7 +103,7 @@ Name: Change house settings
 Author: Grupo …
 Version: Versão 1
 Change history: ----
-Priority: Low when compared to Change room settings
+Priority: 5-Low when compared to Change room settings
 Criticality: Medium
 Source: Kemilly Garcia
 Short description: It provides the user the ability to change the rules imposed by the master for the entire house.
@@ -123,7 +123,7 @@ Name: Change room settings
 Author: Grupo …
 Version: Versão 1
 Change history: ----
-Priority: High when compared to Change house settings 
+Priority: 4-High when compared to Change house settings 
 Criticality: Medium
 Source: Kemilly Garcia
 Short description: It provides the user the ability to change the rules imposed by the master for each room.
@@ -156,7 +156,7 @@ Result: The system works as is supposed.
 Main scenario: The actuators activate according to the information gathered by the sensors and the rules set at the moment.
 Alternative scenario(s): None.
 Exception scenario(s):   The sensors don’t receive information.
-			                   The actuators don’t activate. 
+			 The actuators don’t activate. 
 
 
 Identifier: Case 9
@@ -164,7 +164,7 @@ Name: Maintenance
 Author: Grupo …
 Version: Versão 1
 Change history: ----
-Priority: Higher than any other order except Login 
+Priority: 2-Higher than any other order except Login 
 Criticality: High
 Source: Kemilly Garcia
 Short description: The master repairs the system as necessary.
@@ -184,7 +184,7 @@ Name: Login
 Author: Grupo …
 Version: Versão 1
 Change history: ----
-Priority: Higher than any other order
+Priority: 1-Higher than any other order
 Criticality: Very High
 Source: Kemilly Garcia
 Short description: The master has to provide his credentials in order to be able to repair the system.
