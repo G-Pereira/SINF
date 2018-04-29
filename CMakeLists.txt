@@ -1,8 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project(SINF)
 
-find_package (Threads)
+find_package (Threads REQUIRED)
 
-add_executable(SINF src/main.c)
+add_executable(SINF src/main.cpp
+        src/Database.cpp src/Database.h
+        src/Config.cpp src/Config.h
+        src/Mote.cpp src/Mote.h
+        src/Sensor.cpp src/Sensor.h
+        src/Room.cpp src/Room.h)
 
-target_link_libraries (SINF m ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries (SINF m ${CMAKE_THREAD_LIBS_INIT} pq)
