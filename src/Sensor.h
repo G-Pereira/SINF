@@ -6,9 +6,7 @@
 class Sensor {
   int id;
   std::string mote_id;
-  std::string timestamp;
-  int info;
-  int type;
+  std::string type;
 };
 
 

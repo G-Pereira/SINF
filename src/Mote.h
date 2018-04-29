@@ -13,7 +13,6 @@ class Mote {
 public:
   std::string name;
   int room_id;
-  std::vector<Sensor> sensors;
 };
 
 

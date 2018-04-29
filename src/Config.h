@@ -6,7 +6,7 @@
 
 class Config {
 public:
-  Room room;
+  int room_id;
   int temp_min;
   int temp_max;
   int hum_max;
