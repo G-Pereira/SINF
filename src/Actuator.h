@@ -4,7 +4,7 @@
 
 #ifndef SINF_ACTUATOR_H
 #define SINF_ACTUATOR_H
-
+#include <string>
 
 class Actuator {
   int id;

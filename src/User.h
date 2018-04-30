@@ -14,7 +14,7 @@ public:
     std::string password;
     int permission;
 
-    bool auth(std::string user, std::string password);
+    bool auth(std::string username, std::string password);
 };
 
 #endif //SINF_USER_H

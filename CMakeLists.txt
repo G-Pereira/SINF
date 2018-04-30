@@ -11,6 +11,6 @@ add_executable(SINF src/main.cpp
         src/Room.cpp src/Room.h
         src/User.cpp src/User.h
         src/Historic.cpp src/Historic.h
-        src/Actuator.cpp src/Actuator.h)
+        src/Actuator.cpp src/Actuator.h src/Location_hist.cpp src/Location_hist.h)
 
 target_link_libraries (SINF m ${CMAKE_THREAD_LIBS_INIT} pq)

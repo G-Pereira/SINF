@@ -11,8 +11,10 @@
 
 class Mote {
 public:
-  std::string name;
-  int room_id;
+    std::string name;
+    int room_id;
+
+    void MoteUpdate(std::string name, int room_id);
 };
 
 
