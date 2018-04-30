@@ -3,6 +3,7 @@
 
 #include <string>
 #include "Room.h"
+#include "User.h"
 
 class Config {
 public:
@@ -13,6 +14,8 @@ public:
   int lum_min;
   int infra_min;
   std::string time_change_conf;
+
+  bool updateConfigs(User user, int room_id, std::string timestamp, int);
 };
 
 

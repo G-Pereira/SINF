@@ -4,3 +4,15 @@ a\.out
 \.idea/
 
 cmake-build-debug/
+
+CMakeFiles/
+
+CMakeCache\.txt
+
+Makefile
+
+cmake_install\.cmake
+
+SINF\.cbp
+
+SINF
