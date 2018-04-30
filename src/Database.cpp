@@ -1,4 +1,3 @@
-#include <libpq-fe.h>
 #include "Database.h"
 
 int Database::Connect() {

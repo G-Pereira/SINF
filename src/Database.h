@@ -1,6 +1,7 @@
 #ifndef SINF_DATABASE_H
 #define SINF_DATABASE_H
 
+#include <libpq-fe.h>
 #include <string>
 
 class Database{
