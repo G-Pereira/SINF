@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <fstream>
 #include <cstring>
-//#include "Database.h"
+#include "Database.h"
 
 #define TEMP_LOW 24
 #define TEMP_HIGH 27
@@ -33,9 +33,10 @@ int main(int argc, char **argv) {
     printf("Wrong usage!\nUsage: ./a.out /dev/pts/x /dev/pts/y\n");
     return 0;
   }
+  printf("Welcome to HomeAuto!\nSystem Starting up...\nThis wont take long\n");
   FILE *in = fopen(argv[1], "r");
   FILE *out = fopen(argv[2], "w");
-  //Database db("sinfa23", "eVrzWLCM");
+  Database db("sinfa23", "eVrzWLCM");
 
   while (1) {
     pthread_create(&dataThread, NULL, readData, (void *) in);

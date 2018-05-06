@@ -10,7 +10,7 @@ public:
   std::string password;
   Database(std::string user, std::string password);
 
-  int Connect();
+  void Connect();
 };
 
 
