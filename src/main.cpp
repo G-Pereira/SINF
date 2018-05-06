@@ -110,11 +110,6 @@ void *defineActuators(void *f) {
   FILE *file = (FILE *) f;
   char buf[500] = "";
   for (int i = 0; i < ndevices; i++) {
-    printf(
-      "New Sensor:\nID: %d\nBattery Level: %lf\nTemperature: %lf\nHumidity: %lf\nVisible Light: %lf\nInfrared Light: %lf\n\n",
-      devices[i].id, devices[i].battery, devices[i].temperature, devices[i].humidity, devices[i].visibleLight,
-      devices[i].infraredLight);
-
     if (i == 0) {
       if (devices[i].battery == 0) {
         strcat(buf, "[[0,0,0],");
