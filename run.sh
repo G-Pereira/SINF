@@ -12,6 +12,6 @@ read -p "Enter second socat out: " secondout
 echo $PWD
 gnome-terminal --working-directory "$PWD/simulators" -e "bash -c './MsgCreator.py > /dev/pts/$firstin'"
 gnome-terminal --working-directory "$PWD/simulators" -e "bash -c './RGBMatrix.py < /dev/pts/$secondout'"
-gnome-terminal --working-directory "$PWD" -e "bash -c 'cmake .'"
-gnome-terminal --working-directory "$PWD" -e "bash -c 'make SINF'"
+cmake .
+make SINF
 gnome-terminal --working-directory "$PWD" -e "bash -c './SINF /dev/pts/$firstout /dev/pts/$secondin'"
