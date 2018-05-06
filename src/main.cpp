@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
   }
   FILE *in = fopen(argv[1], "r");
   FILE *out = fopen(argv[2], "w");
-  Database db("sinfa23", "eVrzWLCM");
+  //Database db("sinfa23", "eVrzWLCM");
 
   while (1) {
     readData(in);
