@@ -20,8 +20,8 @@ typedef struct {
   double infraredLight;
 } sensor;
 
-sensor static *devices;
-int static ndevices = 0;
+sensor *devices;
+int ndevices = 0;
 
 void readData(void *f);
 void defineActuators(void *f);
