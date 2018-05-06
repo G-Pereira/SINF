@@ -1,8 +1,7 @@
 #include "Database.h"
 
 void Database::Connect() {
-  PGconn *dbconn;
-  dbconn = PQconnectdb(("host='db.fe.up.pt' user='" + this->user + "' password='" + this->password + "'").c_str());
+  dbconn = PQconnectdb(("host='db.fe.up.pt' user='" + user + "' password='" + password + "'").c_str());
   if (PQstatus(dbconn) == CONNECTION_BAD) {
     printf("Error Connecting to Database :(");
     exit(-1);
@@ -10,8 +9,11 @@ void Database::Connect() {
   printf("Connection to database successful!");
 }
 
-Database::Database(const std::string user, const std::string password) {
-  this->user = user;
-  this->password = password;
-  Connect();
+Database::Database(const std::string u, const std::string p) {
+  user = u;
+  password = p;
+}
+
+void Database::Disconnect() {
+  PQfinish(dbconn);
 }

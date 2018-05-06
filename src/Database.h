@@ -4,13 +4,17 @@
 #include <libpq-fe.h>
 #include <string>
 
-class Database{
+class Database {
 public:
-  std::string user;
-  std::string password;
   Database(std::string user, std::string password);
 
   void Connect();
+  void Disconnect();
+
+private:
+  std::string user;
+  std::string password;
+  PGconn *dbconn;
 };
 
 
