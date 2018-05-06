@@ -3,3 +3,6 @@
 //
 
 #include "Mote.h"
+
+void MoteUpdate(std::string name, int room_id){
+}

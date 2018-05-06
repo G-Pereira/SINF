@@ -4,6 +4,7 @@
 #include <string>
 #include "Room.h"
 #include "User.h"
+#include <postgresql/libpq-fe.h>
 
 class Config {
 public:

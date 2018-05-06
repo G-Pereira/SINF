@@ -1,8 +1,9 @@
 #ifndef SINF_DATABASE_H
 #define SINF_DATABASE_H
 
-#include <libpq-fe.h>
+#include <postgresql/libpq-fe.h>
 #include <string>
+#include <cstdlib>
 
 class Database {
 public:
