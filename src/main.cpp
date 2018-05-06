@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <fstream>
 #include <cstring>
-#include "Database.h"
+//#include "Database.h"
 
 #define TEMP_LOW 24
 #define TEMP_HIGH 27
@@ -21,10 +21,12 @@ typedef struct {
 } sensor;
 
 sensor *devices;
+pthread_t dataThread, actuatorsThread;
 int ndevices = 0;
 
-void readData(void *f);
-void defineActuators(void *f);
+void *readData(void *f);
+
+void *defineActuators(void *f);
 
 int main(int argc, char **argv) {
   if (argc != 3) {
@@ -36,8 +38,12 @@ int main(int argc, char **argv) {
   //Database db("sinfa23", "eVrzWLCM");
 
   while (1) {
-    readData(in);
-    defineActuators(out);
+    pthread_create(&dataThread, NULL, readData, (void *) in);
+    pthread_join(dataThread, NULL);
+    if (ndevices == 5) {
+      pthread_create(&actuatorsThread, NULL, defineActuators, (void *) out);
+      pthread_join(actuatorsThread, NULL);
+    }
   }
 
   fclose(in);
@@ -45,7 +51,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-void readData(void *f) {
+void *readData(void *f) {
   FILE *file = (FILE *) f;
   char *buf;
   size_t len = 0;
@@ -100,8 +106,7 @@ void readData(void *f) {
   }
 }
 
-void defineActuators(void *f) {
-  if (ndevices < 5) return;
+void *defineActuators(void *f) {
   FILE *file = (FILE *) f;
   char buf[500] = "";
   for (int i = 0; i < ndevices; i++) {
