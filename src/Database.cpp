@@ -17,3 +17,13 @@ Database::Database(const std::string u, const std::string p) {
 void Database::Disconnect() {
   PQfinish(dbconn);
 }
+
+char* Database::GetRow(int n){
+  PGresult *res = PQexec(dbconn, "SELECT VERSION()");
+  if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+    printf("No data retrieved\n");
+    PQclear(res);
+    exit(-1);
+  }
+  return PQgetvalue(res, n, 0);   //linha -> n, coluna -> 0
+}

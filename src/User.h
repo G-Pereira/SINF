@@ -7,6 +7,7 @@
 
 
 #include <string>
+#include <postgresql/libpq-fe.h>
 
 class User {
 public:
@@ -15,6 +16,9 @@ public:
     int permission;
 
     bool auth(std::string username, std::string password);
+
+private:
+
 };
 
 #endif //SINF_USER_H

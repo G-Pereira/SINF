@@ -12,6 +12,9 @@ public:
   void Connect();
   void Disconnect();
 
+    char* GetRow(int n);     //retorna o valor da linha n, nao sei se a linha e cada exemplo e as colunas sao os parametros, e facil de mudar
+
+
 private:
   std::string user;
   std::string password;
