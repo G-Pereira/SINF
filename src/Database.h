@@ -13,8 +13,6 @@ public:
 
   ~Database();
 
-  void Disconnect();
-
 private:
   std::string user;
   std::string password;
