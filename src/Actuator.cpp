@@ -3,3 +3,9 @@
 //
 
 #include "Actuator.h"
+#include "Database.h"
+
+bool Actuator::ActuatorExists(int device, int room_id) {
+  Database db();
+  return false;
+}

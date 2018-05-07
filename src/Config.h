@@ -2,21 +2,19 @@
 #define SINF_CONFIG_H
 
 #include <string>
-#include "Room.h"
 #include "User.h"
-#include <postgresql/libpq-fe.h>
 
 class Config {
 public:
-    float room_id;
-    float temp_min;
-    float temp_max;
-    float hum_max;
-    float lum_min;
-    float infra_min;
-    std::string time_change_conf;
+  float room_id;
+  float temp_min;
+  float temp_max;
+  float hum_max;
+  float lum_min;
+  float infra_min;
+  std::string time_change_conf;
 
-    bool updateConfigs(User user, int room_id, std::string timestamp, int);
+  bool updateConfigs(User user, int room_id, std::string timestamp, int);
 };
 
 

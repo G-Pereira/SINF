@@ -4,5 +4,5 @@
 
 #include "Mote.h"
 
-void Mote::MoteUpdate(std::string name, int room_id){
+void Mote::MoteUpdate(std::string name, int room_id) {
 }

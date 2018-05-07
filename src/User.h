@@ -5,17 +5,15 @@
 #ifndef SINF_USER_H
 #define SINF_USER_H
 
-
 #include <string>
-#include <postgresql/libpq-fe.h>
 
 class User {
 public:
-    std::string username;
-    std::string password;
-    int permission;
+  std::string username;
+  std::string password;
+  int permission;
 
-    bool auth(std::string username, std::string password);
+  bool auth(std::string username, std::string password);
 
 private:
 

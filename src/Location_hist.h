@@ -4,10 +4,11 @@
 
 #ifndef SINF_LOCATION_HIST_H
 #define SINF_LOCATION_HIST_H
+
 #include <string>
 
 class Location_hist {
-    std::string time_change_date;
+  std::string time_change_date;
 };
 
 
