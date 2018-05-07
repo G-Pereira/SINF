@@ -14,8 +14,8 @@ public:
   ~Database();
 
 private:
-  std::string user;
-  std::string password;
+  std::string user = "sinfa23";
+  std::string password = "eVrzWLCM";
   PGconn *dbconn;
 };
 

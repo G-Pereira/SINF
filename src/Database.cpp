@@ -1,7 +1,7 @@
 #include "Database.h"
 
 Database::Database() {
-  dbconn = PQconnectdb("host='db.fe.up.pt' user='sinfa23' password='eVrzWLCM'");
+  dbconn = PQconnectdb(("host='db.fe.up.pt' user='" + user + "' password='" + password + "'").c_str());
   if (PQstatus(dbconn) == CONNECTION_BAD) {
     printf("Error Connecting to Database :(");
     exit(-1);
