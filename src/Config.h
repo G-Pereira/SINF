@@ -6,15 +6,18 @@
 
 class Config {
 public:
-  float room_id;
+  int room_id;
+  std::string time_change_conf;
   float temp_min;
   float temp_max;
   float hum_max;
   float lum_min;
   float infra_min;
-  std::string time_change_conf;
+
+  Config(int room_id);
 
   bool updateConfigs(User user, int room_id, std::string timestamp, int);
+
 };
 
 

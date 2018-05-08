@@ -6,6 +6,7 @@
 #define SINF_ACTUATOR_H
 
 #include <string>
+#include "Database.h"
 
 class Actuator {
 public:

@@ -10,14 +10,14 @@
 class Data {
 public:
   void readData(std::string input);
-
-private:
   int moteId;
   double battery = 0;
   double temperature = 0;
   double humidity = 0;
   double visibleLight = 0;
   double infraredLight = 0;
+
+private:
 };
 
 

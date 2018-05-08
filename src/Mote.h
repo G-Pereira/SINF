@@ -14,7 +14,7 @@ public:
   std::string name;
   int room_id;
 
-  void MoteUpdate(std::string name, int room_id);
+  int CheckRoom(int m_id);
 };
 
 
