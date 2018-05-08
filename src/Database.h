@@ -1,26 +1,22 @@
 #ifndef SINF_DATABASE_H
 #define SINF_DATABASE_H
 
-#include <libpq-fe.h>
+#include <pqxx/pqxx>
 #include <string>
 #include <cstdlib>
 #include <vector>
 #include <string>
 
+using namespace pqxx;
+using namespace std;
+
 class Database {
 public:
-  Database();
-
-  ~Database();
-
-  std::vector<std::vector<std::string>> QueryMultiple(std::string query);
-
-  std::vector<std::string> QuerySingle(std::string query);
+  vector<vector<string>> Query(std::string query);
 
 private:
-  std::string user = "sinfa23";
-  std::string password = "eVrzWLCM";
-  PGconn *dbconn;
+  string user = "sinfa23";
+  string password = "eVrzWLCM";
 };
 
 

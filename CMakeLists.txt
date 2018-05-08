@@ -15,4 +15,4 @@ add_executable(SINF src/main.cpp
         src/Location_hist.cpp src/Location_hist.h
         src/Data.cpp src/Data.h)
 
-target_link_libraries (SINF m ${CMAKE_THREAD_LIBS_INIT} pq)
+target_link_libraries (SINF m ${CMAKE_THREAD_LIBS_INIT} pqxx pq)

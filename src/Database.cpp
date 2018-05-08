@@ -1,35 +1,23 @@
 #include <iostream>
 #include "Database.h"
 
-Database::Database() {
-  dbconn = PQconnectdb(("host='db.fe.up.pt' user='" + user + "' password='" + password + "'").c_str());
-  if (PQstatus(dbconn) == CONNECTION_BAD) {
-    printf("Error Connecting to Database :(");
-    exit(-1);
-  }
-}
+vector<vector<string>> Database::Query(std::string query) {
+  connection C(
+    "dbname = sinfa23 user = " + user + " password = " + password + " hostaddr = 192.168.50.131 port = 5432");
+  vector<vector<string>> res;
 
-Database::~Database() {
-  PQfinish(dbconn);
-}
+  nontransaction N(C);
 
-std::vector<std::string> Database::QuerySingle(std::string query) {
-  printf("%s", query);
-  std::vector<std::string> result;
-  PGresult *q = PQexec(dbconn, query.c_str());
-  if (PQresultStatus(q) == PGRES_TUPLES_OK) {
-    int nt = PQntuples(q);
-    if (nt != 0) {
-      int i;
-      for (i = 0; i < nt; i++) {
-        result[i] = PQgetvalue(q, i, 1);
-      }
+  result R(N.exec(query));
+
+  for (result::const_iterator c = R.begin(); c != R.end(); ++c) {
+    vector<string> row;
+    int i;
+    for (i = 0; i < c.size(); i++) {
+      row.push_back(c[i].as<string>());
     }
+    res.push_back(row);
   }
-  PQclear(q);
-  return result;
-}
-
-std::vector<std::vector<std::string>> Database::QueryMultiple(std::string query) {
-  return std::vector<std::vector<std::string>>();
+  C.disconnect();
+  return res;
 }
