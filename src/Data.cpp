@@ -8,7 +8,7 @@
 #include <iostream>
 #include "Data.h"
 
-void Data::readData(std::string input) {
+void Data::Data(std::string input) {
   std::vector<std::string> fields;
   boost::split(fields, input, boost::is_any_of(" "));
 

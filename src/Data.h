@@ -9,7 +9,7 @@
 
 class Data {
 public:
-  void readData(std::string input);
+  Data(std::string input);
 
   int moteId;
   double battery = 0;

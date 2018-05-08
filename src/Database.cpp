@@ -7,7 +7,6 @@ Database::Database() {
     printf("Error Connecting to Database :(");
     exit(-1);
   }
-  printf("Connection to database successful!");
 }
 
 Database::~Database() {
@@ -15,6 +14,7 @@ Database::~Database() {
 }
 
 std::vector<std::string> Database::QuerySingle(std::string query) {
+  printf("%s", query);
   std::vector<std::string> result;
   PGresult *q = PQexec(dbconn, query.c_str());
   if (PQresultStatus(q) == PGRES_TUPLES_OK) {
