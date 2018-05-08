@@ -10,6 +10,7 @@
 class Data {
 public:
   void readData(std::string input);
+
   int moteId;
   double battery = 0;
   double temperature = 0;

@@ -14,6 +14,7 @@ public:
   ~Database();
 
   std::vector<std::vector<std::string>> QueryMultiple(std::string query);
+
   std::vector<std::string> QuerySingle(std::string query);
 
 private:

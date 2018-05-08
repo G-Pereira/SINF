@@ -2,7 +2,6 @@
 #include "Database.h"
 #include "Data.h"
 #include "Historic.h"
-#include "Config.h"
 #include "Mote.h"
 
 void readData(std::string in);
@@ -24,12 +23,13 @@ int main(int argc, char **argv) {
     Mote mote;
     fileIn.getline(reading, 100);
     data.readData(reading);
-    Config conf(mote.CheckRoom(data.moteId));
-    printf("%f\n", conf.temp_max);
+
+    //Config conf(mote.CheckRoom(data.moteId));
+    //printf("%f\n", conf.temp_max);
     // Get Configs
     // check if actuator exists
-      //if so check config
-      // define on/off accordinggly
+    //if so check config
+    // define on/off accordinggly
   }
 
   fileIn.close();
