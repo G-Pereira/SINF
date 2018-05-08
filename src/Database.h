@@ -12,7 +12,7 @@ using namespace std;
 
 class Database {
 public:
-  vector<vector<string>> Query(std::string query);
+  vector<vector<string>> Select(string table, string filter = "true");
 
 private:
   string user = "sinfa23";

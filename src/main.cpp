@@ -24,9 +24,8 @@ int main(int argc, char **argv) {
     Mote mote;
     fileIn.getline(reading, 100);
     Data data(reading);
-    std::string query = "SELECT * FROM homeauto.room WHERE name='BATH'";
     Database db;
-    cout << db.Query(query)[0][1] << endl;
+    cout << db.Select("room", "name='BATH'")[0][1] << endl;
     //Config conf(mote.CheckRoom(data.moteId));
     //printf("%f\n", conf.temp_max);
     // Get Configs
