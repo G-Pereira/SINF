@@ -12,11 +12,11 @@ public:
   Data(std::string input);
 
   int moteId;
-  double battery = 0;
-  double temperature = 0;
-  double humidity = 0;
-  double visibleLight = 0;
-  double infraredLight = 0;
+  float battery = 0;
+  float temperature = 0;
+  float humidity = 0;
+  float visibleLight = 0;
+  float infraredLight = 0;
 
 private:
 };
