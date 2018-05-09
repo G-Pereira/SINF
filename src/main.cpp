@@ -27,8 +27,8 @@ int main(int argc, char **argv) {
     Mote mote;
     fileIn.getline(reading, 100);
     Data data(reading);
-    hist.mote_id = data.moteId;
-    hist.room_id = mote.CheckRoom(data.moteId);
+    hist.mote_id = data.moteId-1;
+    hist.room_id = mote.CheckRoom(hist.mote_id);
     Config conf(hist.room_id);
     Actuator act;
     if (act.ActuatorExists("AC", hist.room_id) &&
