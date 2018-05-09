@@ -2,11 +2,6 @@
 #include "Config.h"
 #include "Database.h"
 
-
-bool Config::updateConfigs(User user, int room_id, std::string timestamp, int) {
-  return false;
-}
-
 Config::Config(int r_id) {
   Database db;
   std::vector<std::string> results;

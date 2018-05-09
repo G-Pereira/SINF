@@ -16,8 +16,6 @@ public:
 
   Config(int room_id);
 
-  bool updateConfigs(User user, int room_id, std::string timestamp, int);
-
 };
 
 
