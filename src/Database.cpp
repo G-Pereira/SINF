@@ -3,7 +3,6 @@
 
 vector<vector<string>> Database::Select(string table, string filter) {
   string query = "SELECT * FROM homeauto." + table + " WHERE " + filter;
-  cerr << "New query: " << query << endl;
   connection C(
     "dbname = sinfa23 user = " + user + " password = " + password + " hostaddr = 192.168.50.131 port = 5432");
   vector<vector<string>> res;
