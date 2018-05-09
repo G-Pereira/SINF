@@ -6,8 +6,6 @@
 
 using namespace std;
 
-void readData(std::string in);
-
 int main(int argc, char **argv) {
   if (argc != 2) {
     printf("Wrong usage!\nUsage: ./a.out /dev/pts/x /dev/pts/y\n");
@@ -27,7 +25,6 @@ int main(int argc, char **argv) {
   }
 
   fileIn.close();
-
   return 0;
 }
 
