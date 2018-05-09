@@ -10,7 +10,7 @@
 
 class Actuator {
 public:
-  bool ActuatorExists(int device, int room_id);
+  bool ActuatorExists(string device, int room_id);
 
 private:
   int id;

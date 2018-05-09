@@ -4,10 +4,9 @@
 
 #include "Actuator.h"
 
-bool Actuator::ActuatorExists(int device, int room_id) {
+bool Actuator::ActuatorExists(string device, int room_id) {
   Database db;
-  std::vector<std::string> info = db.Select(
-    "SELECT * FROM homeauto.actuator WHERE room_id = " + std::to_string(room_id) + " AND device = " +
-    std::to_string(device))[0];
+  std::vector<std::string> info = db.Select("actuator", "room_id = " + std::to_string(room_id) + " AND device = '" +
+                                                        device + "'")[0];
   return !info.empty();
 }

@@ -3,6 +3,7 @@
 
 vector<vector<string>> Database::Select(string table, string filter) {
   string query = "SELECT * FROM homeauto." + table + " WHERE " + filter;
+  cerr << "New query: " << query << endl;
   connection C(
     "dbname = sinfa23 user = " + user + " password = " + password + " hostaddr = 192.168.50.131 port = 5432");
   vector<vector<string>> res;
@@ -21,4 +22,14 @@ vector<vector<string>> Database::Select(string table, string filter) {
   }
   C.disconnect();
   return res;
+}
+
+void Database::Insert(string table, string fields, string values) {
+  string query = "INSERT INTO homeauto." + table + " (" + fields + ") VALUES (" + values + ")";
+  connection C(
+    "dbname = sinfa23 user = " + user + " password = " + password + " hostaddr = 192.168.50.131 port = 5432");
+  work W(C);
+  W.exec(query);
+  W.commit();
+  C.disconnect();
 }

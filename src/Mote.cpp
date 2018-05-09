@@ -7,5 +7,5 @@
 
 int Mote::CheckRoom(int m_id) {
   Database db;
-  return stoi(db.Select("SELECT * FROM homeauto.mote WHERE mote_id=" + m_id)[0][1]);
+  return stoi(db.Select("mote", "id = " + to_string(m_id))[0][1]);
 }

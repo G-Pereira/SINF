@@ -13,6 +13,7 @@ using namespace std;
 class Database {
 public:
   vector<vector<string>> Select(string table, string filter = "true");
+  void Insert(string table, string fields, string values);
 
 private:
   string user = "sinfa23";
