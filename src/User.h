@@ -13,7 +13,7 @@ public:
   std::string password;
   int permission;
 
-  bool auth(std::string username, std::string password);
+  User(std::string username, std::string password);
 
 private:
 
