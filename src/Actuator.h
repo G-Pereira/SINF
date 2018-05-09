@@ -7,10 +7,12 @@
 
 #include <string>
 #include "Database.h"
+#include "Data.h"
 
 class Actuator {
 public:
   bool ActuatorExists(string device, int room_id);
+  void setActuators(Data data);
 
 private:
   int id;
