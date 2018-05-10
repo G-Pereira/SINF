@@ -16,6 +16,9 @@ public:
 
   Config(int room_id);
 
+private:
+  void CheckNew();
+
 };
 
 
