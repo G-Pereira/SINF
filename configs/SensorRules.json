@@ -2,43 +2,43 @@
   "configs": [
     {
       "name": "ROOM1",
-      "temp_min": 24,
-      "temp_max": 27,
-      "hum_max": 40,
-      "lum_min": 380,
-      "infra_min": 330
+      "temp_min": "24",
+      "temp_max": "27",
+      "hum_max": "40",
+      "lum_min": "380",
+      "infra_min": "330"
     },
     {
       "name": "ROOM2",
-      "temp_min": 24,
-      "temp_max": 27,
-      "hum_max": 40,
-      "lum_min": 380,
-      "infra_min": 330
+      "temp_min": "24",
+      "temp_max": "27",
+      "hum_max": "40",
+      "lum_min": "380",
+      "infra_min": "330"
     },
     {
       "name": "BATH",
-      "temp_min": 24,
-      "temp_max": 27,
-      "hum_max": 40,
-      "lum_min": 380,
-      "infra_min": 330
+      "temp_min": "24",
+      "temp_max": "27",
+      "hum_max": "40",
+      "lum_min": "380",
+      "infra_min": "330"
     },
     {
       "name": "KITCHEN",
-      "temp_min": 24,
-      "temp_max": 27,
-      "hum_max": 40,
-      "lum_min": 380,
-      "infra_min": 330
+      "temp_min": "24",
+      "temp_max": "27",
+      "hum_max": "40",
+      "lum_min": "380",
+      "infra_min": "330"
     },
     {
       "name": "LIVING_ROOM",
-      "temp_min": 24,
-      "temp_max": 27,
-      "hum_max": 40,
-      "lum_min": 380,
-      "infra_min": 330
+      "temp_min": "24",
+      "temp_max": "27",
+      "hum_max": "40",
+      "lum_min": "380",
+      "infra_min": "330"
     }
   ]
 }
