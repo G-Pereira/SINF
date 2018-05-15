@@ -16,8 +16,8 @@ public:
   void Insert(string table, string fields, string values);
 
 private:
-  string user = "sinfa23";
-  string password = "eVrzWLCM";
+  string user = "";
+  string password = "";
 };
 
 
